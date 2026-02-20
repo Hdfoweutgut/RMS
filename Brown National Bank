@@ -55,15 +55,11 @@ function searchopenbank()
 	end
 end
 searchopenbank()
-getgenv().searchopenbank = searchopenbank
-getgenv().printcurrentbank = printcurrentbank
 Players.LocalPlayer.OnTeleport:Connect(function(State)
 	if queueonteleport then
-		queueonteleport([[
-			repeat task.wait() until game:IsLoaded()
-			printcurrentbank()
-			searchopenbank()
-		]])
+		queueonteleport([[loadstring(game:HttpGet("https://raw.githubusercontent.com/Hdfoweutgut/RMS/refs/heads/main/Brown%20National%20Bank"))()]])
+	elseif queue_on_teleport then
+		queue_on_teleport([[loadstring(game:HttpGet("https://raw.githubusercontent.com/Hdfoweutgut/RMS/refs/heads/main/Brown%20National%20Bank"))()]])
 	else
 		error('Incompatible Exploit. Your exploit does not support this command (missing queueonteleport)')
 	end
